@@ -1,0 +1,30 @@
+name: Cron test, every day at midnight
+
+on:
+  push:
+    branches: [ main ]
+  #pull_request:
+  #  branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      #----------------------------------------------
+      #       check-out repo and set-up python
+      #----------------------------------------------
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up python
+        id: setup-python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8.10
+      
+      #----------------------------------------------
+      # Runner
+      #----------------------------------------------
+      - name: Install library
+        run: python main.py
