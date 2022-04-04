@@ -1,4 +1,4 @@
-name: Cron test, every day at midnight
+name: Send mail
 
 on:
   #push:
@@ -9,7 +9,7 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  test:
+  mail:
     runs-on: ubuntu-latest
     steps:
       #----------------------------------------------
