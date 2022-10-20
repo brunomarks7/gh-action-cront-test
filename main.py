@@ -17,7 +17,7 @@ client = messagebird.Client(str(MESSAGEBIRD_KEY))
 message = client.message_create(
     '+5513991389355',
     '+5513991389355',
-    'Esse é o SMS da meia noite. Ontem:' + previous_date
+    'Esse é o SMS da meia noite. Ontem:' + str(previous_date)
 )
 
 print(message)
