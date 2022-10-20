@@ -1,12 +1,12 @@
 name: Cron test, every day at midnight
 
 on:
-  #push:
-    #branches: [ main ]
+  push:
+    branches: [ main ]
   #pull_request:
   #  branches: [ main ]
-  schedule:
-    - cron: '0 0 * * *'
+  #schedule:
+    #- cron: '0 0 * * *'
 
 jobs:
   yesterday:
@@ -16,17 +16,17 @@ jobs:
       #       check-out repo and set-up python
       #----------------------------------------------
       - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up python
-        id: setup-python
-        uses: actions/setup-python@v2
+        uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
-          python-version: 3.8.10
-      
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
+      - run: pip install -r requirements.txt
+
       #----------------------------------------------
       # Runner
       #----------------------------------------------
-      - name: Install library
+      - name: Run Python
         env:
           MESSAGEBIRD_KEY: ${{ secrets.MESSAGEBIRD_KEY }}
         run: python main.py
