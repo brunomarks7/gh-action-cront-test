@@ -27,4 +27,6 @@ jobs:
       # Runner
       #----------------------------------------------
       - name: Install library
+        env:
+          MESSAGEBIRD_KEY: ${{ secrets.MESSAGEBIRD_KEY }}
         run: python main.py
