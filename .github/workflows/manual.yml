@@ -1,12 +1,12 @@
 name: Cron test, every day at midnight
 
 on:
-  push:
-    branches: [ main ]
+  #push:
+    #branches: [ main ]
   #pull_request:
   #  branches: [ main ]
-  #schedule:
-    #- cron: '0 0 * * *'
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   yesterday:
